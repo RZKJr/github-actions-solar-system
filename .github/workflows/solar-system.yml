@@ -17,17 +17,46 @@
       steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
+
         - name: Setup NodeJS Version
           uses: actions/setup-node@v4
           with:
             node-version: 20
+
         - name: Install Dependencies
           run: npm install
+
         - name: Unit Testing
           run: npm test
+
         - name: Archive Test Result
           uses: actions/upload-artifact@v4
           if: always()
           with:
             name: Mocha-Test-Result
             path: test-results.xml
+
+    code-coverage: 
+      name: code-coverage
+      runs-on: ubuntu-latest
+      steps:
+        - name: checkout 
+          uses: actions/checkout@v4
+
+        - name: Setup Node.js version 18
+          uses: actions/setup-node@v4
+          with:
+            node-version: 18 
+        - name: installing node dependencies 
+          run: npm install 
+
+        - name: run code coverage bullshit 
+          run: npm run code-coverage
+
+        - name: upload all that garbage
+          uses: actions/upload-artifact
+          if: always()
+          with: 
+            name: Code-Coverage-Result
+            path: coverage
+            retention-days: 5
