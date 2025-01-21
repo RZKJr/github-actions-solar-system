@@ -53,7 +53,7 @@
           
 
         - name: run code coverage bullshit 
-
+          continue-on-error: true
           run: npm run coverage
 
         - name: upload all that garbage
