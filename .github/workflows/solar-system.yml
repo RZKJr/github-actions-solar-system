@@ -47,6 +47,7 @@
           uses: actions/setup-node@v4
           with:
             node-version: 18 
+
         - name: installing node dependencies 
           run: npm install 
 
@@ -54,7 +55,7 @@
           run: npm run code-coverage
 
         - name: upload all that garbage
-          uses: actions/upload-artifact
+          uses: actions/upload-artifact@v4
           if: always()
           with: 
             name: Code-Coverage-Result
