@@ -113,7 +113,7 @@
             
         - name: run kubectl 
           run: kubectl version --short -o yaml
-    integration-testing:
+    integration-test:
       needs: dev-deploy
       uses: ./.github/workflows/reusable-workflow.yml
       with:
